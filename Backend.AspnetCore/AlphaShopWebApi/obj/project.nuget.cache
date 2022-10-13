@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2E9trN5lk51gMh3QhNJs62ry36rCtZWG9eFZaF7dPaD6iaI9DXS8ANG3FImDPk6De9HEYqhHyi09U40uda7D5g==",
+  "dgSpecHash": "icOAm0dnMfZ3g1w/foYhdDRYvjAD4UKqW1fZwTGiEg1I34uQ0TOf5XnVJFzsB/wCPXLNuzmAgHF+mI3n6tl3JQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\acasella\\Edok_Code\\alphashop\\Backend.AspnetCore\\AlphaShopWebApi\\AlphaShopWebApi.csproj",
+  "projectFilePath": "C:\\Users\\acasella\\Edok_Code\\alphashop\\Backend.AspnetCore\\AlphashopWebApi\\AlphashopWebApi.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

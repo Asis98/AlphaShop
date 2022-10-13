@@ -1,11 +1,11 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net5.0": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net5.0": []
   },
   "packageFolders": {
     "C:\\Users\\acasella\\.nuget\\packages\\": {}
@@ -13,26 +13,26 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\acasella\\Edok_Code\\alphashop\\Backend.AspnetCore\\AlphaShopWebApi\\AlphaShopWebApi.csproj",
-      "projectName": "AlphaShopWebApi",
-      "projectPath": "C:\\Users\\acasella\\Edok_Code\\alphashop\\Backend.AspnetCore\\AlphaShopWebApi\\AlphaShopWebApi.csproj",
+      "projectUniqueName": "C:\\Users\\acasella\\Edok_Code\\alphashop\\Backend.AspnetCore\\AlphashopWebApi\\AlphashopWebApi.csproj",
+      "projectName": "AlphashopWebApi",
+      "projectPath": "C:\\Users\\acasella\\Edok_Code\\alphashop\\Backend.AspnetCore\\AlphashopWebApi\\AlphashopWebApi.csproj",
       "packagesPath": "C:\\Users\\acasella\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\acasella\\Edok_Code\\alphashop\\Backend.AspnetCore\\AlphaShopWebApi\\obj\\",
+      "outputPath": "C:\\Users\\acasella\\Edok_Code\\alphashop\\Backend.AspnetCore\\AlphashopWebApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\acasella\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net6.0"
+        "net5.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "projectReferences": {}
         }
       },
@@ -43,8 +43,8 @@
       }
     },
     "frameworks": {
-      "net6.0": {
-        "targetAlias": "net6.0",
+      "net5.0": {
+        "targetAlias": "net5.0",
         "imports": [
           "net461",
           "net462",

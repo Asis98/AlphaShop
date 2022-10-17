@@ -1,0 +1,22 @@
+##Visualizzare i contenitori attivi
+docker ps
+
+##Accedere al contenitore 
+docker exec -it [idUnivoco]"bash"
+
+##Attivare la connessione al SqlCmd
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Password'
+
+##Comando di ripristino standard
+RESTORE DATABASE [AlphaShop] FROM DISK = N'/var/opt/mssql/data/AlphaShop.bak'
+go
+
+In Caso di problemi provare con questa modalità:
+
+Nella bash del docker
+touch /var/opt/mssql/data/AlphaShop.mdf 
+touch /var/opt/mssql/data/AlphaShop_log.ldf
+
+Nel SqlCmd 
+RESTORE DATABASE [AlphaShop] FROM DISK = N'/var/opt/mssql/data/AlphaShop.bak' WITH REPLACE;
+go

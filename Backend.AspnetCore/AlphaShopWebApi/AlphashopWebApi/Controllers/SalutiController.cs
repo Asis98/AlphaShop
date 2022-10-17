@@ -8,8 +8,11 @@ namespace AlphashopWebApi.Controllers
     {
         public string getSaluti()
         {
-            return "Sono la tua prima web api creata in c#";
+            return "\"Sono la tua prima web api creata in c#\"";
         }
+
+        [HttpGet("{Nome}")]
+        public string getSaluti(string Nome) => string.Format("\"Saluti, {0} sono il webservice di aspentCore\"", Nome);
 
     }
 }

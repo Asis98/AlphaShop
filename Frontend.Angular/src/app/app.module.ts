@@ -13,6 +13,7 @@ import { LogoutComponent } from './pages/logout/logout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GridArticoliComponent } from './pages/grid-articoli/grid-articoli.component';
 import { ArticoliCardComponent } from './components/articoli-card/articoli-card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { ArticoliCardComponent } from './components/articoli-card/articoli-card.
     GridArticoliComponent,
     ArticoliCardComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, CoreModule, BrowserAnimationsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, CoreModule, BrowserAnimationsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

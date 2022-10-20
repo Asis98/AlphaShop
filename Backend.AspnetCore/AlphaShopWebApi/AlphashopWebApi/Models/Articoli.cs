@@ -15,7 +15,7 @@ namespace AlphashopWebApi.Models
         public  string? Um { get; set; }
         public string? CodStat { get; set; }
         [Range(0,100, ErrorMessage ="I pezzi per  cartone devono essere compresi fra 0 e 100")]
-        public int? PzCart { get; set; }
+        public Int16? PzCart { get; set; }
         [Range(0.01, 100, ErrorMessage = "I pezzi per  cartone devono essere compresi fra 0.1 e 100")]
         public double? PesoNetto { get; set; }
         public int? IdIva { get; set; }

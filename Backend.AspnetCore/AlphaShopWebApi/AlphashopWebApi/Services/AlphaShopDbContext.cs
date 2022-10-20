@@ -1,21 +1,30 @@
-﻿using AlphashopWebApi.Models;
+﻿
+
+using AlphashopWebApi.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AlphashopWebApi.Services
 {
     public class AlphaShopDbContext : DbContext
     {
-        public AlphaShopDbContext(DbContextOptions<AlphaShopDbContext> options) : base(options)
+        protected readonly IConfiguration _configuration;
+        public AlphaShopDbContext(DbContextOptions<AlphaShopDbContext> options, IConfiguration configuration) : base(options)
         {
-            
+            _configuration = configuration;
         }
 
-        public virtual DbSet<Articoli> Articoli { get; set; }
-        public virtual DbSet<Ean> Barcode { get; set; }
-        public virtual DbSet<FamilyAssort> Famassort { get; set; }
-        public virtual DbSet<Ingredienti> Ingredienti { get; set; }
-        public virtual DbSet<Iva> Iva { get; set; }
+        public virtual DbSet<Articoli> Articoli => Set<Articoli>();
+        public virtual DbSet<Ean> Barcode => Set<Ean>();
+        public virtual DbSet<FamilyAssort> Famassort => Set<FamilyAssort>();
+        public virtual DbSet<Ingredienti> Ingredienti => Set<Ingredienti>();
+        public virtual DbSet<Iva> Iva => Set<Iva>();
 
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            // connect to mysql with connection string from app settings
+            var connectionString = _configuration.GetConnectionString("alphashopDbConString");
+            options.UseSqlServer(connectionString);
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Setto la chiave primaria

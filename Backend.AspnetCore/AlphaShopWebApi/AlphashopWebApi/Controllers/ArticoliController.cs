@@ -22,14 +22,19 @@ namespace ArticoliWebService.Controllers
 
         [HttpGet("cerca/descrizione/{filter}")]
         [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
         [ProducesResponseType(200, Type = typeof(IEnumerable<ArticoliDto>))]
-        public IActionResult GetArticoliByDesc(string filter)
+        public async Task<IActionResult> GetArticoliByDesc(string filter)
         {
             var articoliDto = new List<ArticoliDto>();
-            var articoli = this.articolirepository.SelArticoliByDescrizione(filter);
+            var articoli = await articolirepository.SelArticoliByDescrizione(filter) ;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+            if (!articoli.Any())
+            {
+                return NotFound(string.Format("Non è stato trovato alcun articolo con il filtro '{0}'", filter));
             }
 
             foreach (var articolo in articoli)

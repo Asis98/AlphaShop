@@ -9,6 +9,9 @@ builder.Services.AddDbContext<AlphaShopDbContext>();
 
 builder.Services.AddScoped<IArticoliRepository, ArticoliRepository>();
 
+builder.Services.AddEndpointsApiExplorer();
+//builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
 app.UseRouting();

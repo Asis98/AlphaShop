@@ -9,35 +9,38 @@ namespace ArticoliWebService.Services
 {
     public class ArticoliRepository : IArticoliRepository
     {
-        AlphaShopDbContext alphaShopDbContext;
+        AlphaShopDbContext _alphaShopDbContext;
 
         public ArticoliRepository(AlphaShopDbContext alphaShopDbContext)
         {
-            this.alphaShopDbContext =  alphaShopDbContext;
+            _alphaShopDbContext =  alphaShopDbContext;
         }
 
-        public async Task<IEnumerable<Articoli>> SelArticoliByDescrizione(string Descrizione)
-        {
-            return await this.alphaShopDbContext.Articoli
+        public async Task<IEnumerable<Articoli>> SelArticoliByDescrizione(string Descrizione) =>
+                await _alphaShopDbContext.Articoli
                 .Where(a => a.Descrizione!.Contains(Descrizione))
+                .Include(a => a.Barcode)
+                .Include(a => a.iva)
+                .Include(a => a.familyAssort)
                 .OrderBy(a => a.Descrizione)
                 .ToListAsync();
-        }
 
-        public Articoli SelArticoloByCodice(string Code)
-        {
-            return this.alphaShopDbContext.Articoli
-                .Where(a => a.CodArt!.Equals(Code))
-                .FirstOrDefault()!;
-        }
-        public Articoli SelArticoloByEan(string Ean)
-        {
-            
-            return  this.alphaShopDbContext.Barcode
-                .Where(b => b.Barcode!.Equals(Ean))
-                .Select(a => a.Articolo)
-                .FirstOrDefault()!;       
-        }
+        public async Task<Articoli> SelArticoloByCodice(string Code) =>
+                await _alphaShopDbContext.Articoli
+                    .Where(a => a.CodArt!.Equals(Code))
+                    .Include(a => a.Barcode)
+                    .Include(a => a.iva)
+                    .Include(a => a.familyAssort)
+                    .FirstOrDefaultAsync()!;
+
+        public async Task<Articoli> SelArticoloByEan(string Ean) =>
+                await _alphaShopDbContext.Barcode
+                    .Where(b => b.Barcode!.Equals(Ean))
+                        .Include(a => a.Articolo!.Barcode!)
+                        .Include(a => a.Articolo!.familyAssort!)
+                        .Include(a => a.Articolo!.iva!)
+                    .Select(a => a.Articolo)
+                    .FirstOrDefaultAsync()!;
 
         public bool InsArticoli(Articoli articolo)
         {
@@ -58,10 +61,9 @@ namespace ArticoliWebService.Services
         {
             throw new System.NotImplementedException();
         }
+        public async Task<bool> ArticoloExists(string Code) =>
+            await _alphaShopDbContext.Articoli
+                .AnyAsync(c => c.CodArt == Code);
 
-        public Task<bool> ArticoloExists(string Code)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

@@ -5,8 +5,8 @@ namespace AlphashopWebApi.Services
     public interface IArticoliRepository
     {
         public Task<IEnumerable<Articoli>> SelArticoliByDescrizione(string Descrizione);
-        public Articoli SelArticoloByCodice(string Code);
-        public Articoli SelArticoloByEan(string Ean);
+        public Task<Articoli> SelArticoloByCodice(string Code);
+        public Task<Articoli> SelArticoloByEan(string Ean);
         public bool InsArticoli(Articoli articolo);
         public bool UpdArticoli(Articoli articolo);
         public bool DelArticoli(Articoli articolo);

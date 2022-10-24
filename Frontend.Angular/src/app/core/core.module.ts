@@ -5,13 +5,15 @@ import { FooterComponent } from './footer/footer.component';
 import { JumbotronComponent } from './jumbotron/jumbotron.component';
 import { RouterModule } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    JumbotronComponent
+    JumbotronComponent,
+    NotificationsComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import {MatIconModule} from '@angular/material/icon';
   exports: [
     HeaderComponent,
     FooterComponent,
-    JumbotronComponent
+    JumbotronComponent,
+    NotificationsComponent
   ]
 })
 export class CoreModule { }

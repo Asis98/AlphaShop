@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "rxdRlER7PFILCDvSTDbIcYzZJiJd6W7rGtApRdlDHJ206A8+yi7S75H9R3uvX/ZmaSOoNB3LP2V0WHG5vEljsg==",
+  "dgSpecHash": "5QRIEd4U5hQKfYjKLCnmExSpgAIVKhdCccaHEAoJ9j3qJ34FlxpPtHqVsm3gvgo6pv4RCZVZesW2j6GD2P2Suw==",
   "success": true,
   "projectFilePath": "C:\\Users\\acasella\\Edok_Code\\alphashop\\Backend.AspnetCore\\AlphashopWebApi\\AlphashopWebApi\\AlphashopWebApi.csproj",
   "expectedPackageFiles": [
@@ -28,8 +28,12 @@
     "C:\\Users\\acasella\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.8.0\\microsoft.identitymodel.protocols.openidconnect.6.8.0.nupkg.sha512",
     "C:\\Users\\acasella\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.8.0\\microsoft.identitymodel.tokens.6.8.0.nupkg.sha512",
     "C:\\Users\\acasella\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\acasella\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\acasella\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\acasella\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\acasella\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\acasella\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\acasella\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512",
     "C:\\Users\\acasella\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\acasella\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\acasella\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

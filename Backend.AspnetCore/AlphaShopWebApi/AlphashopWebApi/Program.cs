@@ -1,5 +1,6 @@
 using AlphashopWebApi.Services;
 using ArticoliWebService.Services;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,7 @@ builder.Services.AddDbContext<AlphaShopDbContext>();
 builder.Services.AddScoped<IArticoliRepository, ArticoliRepository>();
 
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -23,6 +24,12 @@ app.UseCors(options =>
     .AllowAnyMethod()
     .AllowAnyHeader()
 );
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.MapControllers(); 
 

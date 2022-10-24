@@ -44,20 +44,44 @@
 
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Cerca</button>
+
       </form>
 
-      <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle thumbnail dduser" data-bs-toggle="dropdown" aria-expanded="false">
-          <img class="img-circle" src="/assets/images/user.png" width="38" height="38">
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Accedi</a></li>
-          <li><a class="dropdown-item" href="#">Registrati</a></li>
-          <li><a class="dropdown-item" href="#">Disabilita</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" *ngIf="basicAuth .isLogged()" routerLink="/logout">Logout {{basicAuth .loggedUser()}}</a></li>
-          <li><a class="dropdown-item disabled" *ngIf="!basicAuth .isLogged()"  href="#">Logout</a></li>
+      <div class="col-nav">
+        <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="md-28 material-icons md-menu"></i> </button>
+        <ul class="nav">
+
+          <li class="nav-item">
+            <a class="nav-link btn-icon" onclick="darkmode(this)" href="#">
+              <span class="material-icons md-nights_stay" title="Dark mode"></span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link btn-icon" href="#">
+              <app-notifications></app-notifications>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#"> English </a>
+          </li>
+
+          <li class="dropdown nav-item">
+            <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#">
+              <img class="img-xs rounded-circle" *ngIf="BasicAuth.isLogged()" src="/assets/images/avatars/avatar4.jpg" alt="User" width="35" height="35">
+              <img class="img-xs rounded-circle"  *ngIf="!BasicAuth.isLogged()" src="/assets/images/avatars/offline_user.png" alt="User" width="35" height="35">
+            </a>
+            <div class="dropdown-menu dropdown-menu-end">
+              <a class="dropdown-item" routerLink="/login">Accedi</a>
+              <a class="dropdown-item" routerLink="/signup">Registrati</a>
+              <a class="dropdown-item disabled" href="#">Profilo</a>
+              <a class="dropdown-item disabled" href="#">Settings</a>
+              <hr class="dropdown-divider">
+              <a class="dropdown-item text-danger" *ngIf="BasicAuth.isLogged()" routerLink="/logout">Logout {{BasicAuth.loggedUser()}}</a>
+              <a class="dropdown-item disabled" *ngIf="!BasicAuth.isLogged()" routerLink="/logout">Logout</a>
+            </div>
+          </li>
         </ul>
       </div>
 

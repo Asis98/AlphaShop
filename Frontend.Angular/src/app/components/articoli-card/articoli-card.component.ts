@@ -15,10 +15,10 @@ export class ArticoliCardComponent implements OnInit {
   ngOnInit(): void {}
 
   public editArt(){
-    this.edit.emit(this.articolo.codart);
+    this.edit.emit(this.articolo.codArt);
   }
 
   public deleteArt(){
-    this.delete.emit(this.articolo.codart);
+    this.delete.emit(this.articolo.codArt);
   }
 }

@@ -1,17 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AlphashopWebApi.Dtos;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AlphashopWebApi.Controllers
 {
     [ApiController]
+    [Produces("application/json")]
     [Route("api/saluti")]
-    public class SalutiController
+    public class SalutiController : Controller
     {
-        public string getSaluti()
-        {
-            return "\"Sono la tua prima web api creata in c#\"";
-        }
 
         [HttpGet("{Nome}")]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200, Type = typeof(string))]
         public string getSaluti(string Nome) => string.Format("\"Saluti, {0} sono il webservice di aspentCore\"", Nome);
 
     }

@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GridArticoliComponent } from './pages/grid-articoli/grid-articoli.component';
 import { ArticoliCardComponent } from './components/articoli-card/articoli-card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RegistrazioneComponent } from './pages/registrazione/registrazione.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -25,8 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
     LogoutComponent,
     GridArticoliComponent,
     ArticoliCardComponent,
+    RegistrazioneComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, CoreModule, BrowserAnimationsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, CoreModule, BrowserAnimationsModule, HttpClientModule, NgxPaginationModule],
   providers: [],
   bootstrap: [AppComponent],
 })

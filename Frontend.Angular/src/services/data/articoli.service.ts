@@ -16,17 +16,40 @@ export class ArticoliService {
   //   {codart : "057549001", descrizione : "FINDUS CROCCOLE 400 GR", um : "PZ", pzcart : 12, peso : 0.4, prezzo : 5.97, active : true, data : new Date(), imageUrl: 'assets/images/prodotti/057549001.jpg'},
   // ]
 
+  public server : string = "localhost";
+  public port : string = "5051";
+
   constructor(private httpClient : HttpClient) { }
 
   // public get getArticoli () : IArticoli[]{
   //   return this.articoli;
   // }
 
-  public getArticoliByDesc = (descrizione : string) => {
-    return this.httpClient.get<IArticoli[]>(`http://localhost:5051/api/articoli/cerca/descrizione/${descrizione}`)
+  getArticoliByDesc = (descrizione : string) => {
+    return this.httpClient.get<IArticoli[]>(`http://${this.server}:${this.port}/api/articoli/cerca/descrizione/${descrizione}`) //ALT + 0096 | ALT GR + '
     .pipe(
       map(response => {
         response.forEach(item => item.idStatoArticolo = this.getDesStatoArt(item.idStatoArticolo))
+        return response;
+      })
+    );
+  }
+
+  getArticoliByCode = (codart: string) => {
+    return this.httpClient.get<IArticoli>(`http://${this.server}:${this.port}/api/articoli/cerca/codice/${codart}`)
+    .pipe(
+      map(response => {
+        response.idStatoArticolo = this.getDesStatoArt(response.idStatoArticolo)
+        return response;
+      })
+    );
+  }
+
+  getArticoliByEan = (barcode: string) => {
+    return this.httpClient.get<IArticoli>(`http://${this.server}:${this.port}/api/articoli/cerca/barcode/${barcode}`)
+    .pipe(
+      map(response => {
+        response.idStatoArticolo = this.getDesStatoArt(response.idStatoArticolo)
         return response;
       })
     );
@@ -43,7 +66,5 @@ export class ArticoliService {
     }
   }
 
-  // public getArticoliByCode = (codeArt: string): IArticoli | undefined =>{
-  //   return this.articoli.find(articolo => articolo.codart === codeArt );
-  // }
+
 }

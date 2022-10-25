@@ -35,7 +35,11 @@ namespace ArticoliWebService.Controllers
             }
             if (!articoli.Any())
             {
-                return NotFound(string.Format("Non è stato trovato alcun articolo con il filtro '{0}'", filter));
+                return NotFound(
+                  new ErrMsg(
+                        string.Format("Non è stato trovato alcun articolo con il filtro '{0}'", filter),
+                        HttpContext.Response.StatusCode
+                  ));
             }
 
             foreach (var articolo in articoli)
@@ -55,7 +59,9 @@ namespace ArticoliWebService.Controllers
 
             if (!retVal)
             {
-                return NotFound(string.Format("Non è stato trovato l'articolo con il codice '{0}'", CodArt));
+                return NotFound(
+                    new ErrMsg(string.Format("Non è stato trovato l'articolo con il codice '{0}'", CodArt), HttpContext.Response.StatusCode
+                  ));
             }
 
             var articolo = await _articolirepository.SelArticoloByCodice(CodArt);
@@ -82,11 +88,14 @@ namespace ArticoliWebService.Controllers
 
             if (articolo == null)
             {
-                return NotFound(string.Format("Non è stato trovato l'articolo con il barcode '{0}'", Ean));
+                return NotFound(
+                    new ErrMsg(string.Format("Non è stato trovato l'articolo con il barcode '{0}'", Ean) , HttpContext.Response.StatusCode
+                    ));
             }
 
             return Ok(this.GetArticoliDto(articolo));
         }
+
 
         private ArticoliDto GetArticoliDto(Articoli articolo)
         {

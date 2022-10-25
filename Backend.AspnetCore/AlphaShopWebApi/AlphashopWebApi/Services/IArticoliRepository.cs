@@ -7,10 +7,9 @@ namespace AlphashopWebApi.Services
         public Task<IEnumerable<Articoli>> SelArticoliByDescrizione(string Descrizione);
         public Task<Articoli> SelArticoloByCodice(string Code);
         public Task<Articoli> SelArticoloByEan(string Ean);
-        public bool InsArticoli(Articoli articolo);
-        public bool UpdArticoli(Articoli articolo);
-        public bool DelArticoli(Articoli articolo);
-        public bool Salva();
+        public Task<bool> InsArticoli(Articoli articolo);
+        public Task<bool> UpdArticoli(Articoli articolo);
+        public Task<bool> DelArticoli(Articoli articolo);
         public Task<bool> ArticoloExists(string Code);
     }
 }

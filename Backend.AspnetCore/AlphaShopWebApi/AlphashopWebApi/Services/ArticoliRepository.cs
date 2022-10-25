@@ -42,24 +42,26 @@ namespace ArticoliWebService.Services
                     .Select(a => a.Articolo)
                     .FirstOrDefaultAsync()!;
 
-        public bool InsArticoli(Articoli articolo)
+        public async Task<bool> InsArticoli(Articoli articolo)
         {
-            throw new System.NotImplementedException();
+           await _alphaShopDbContext.AddAsync(articolo);
+           return await Salva();
+        }
+        public async Task<bool> UpdArticoli(Articoli articolo)
+        {
+            _alphaShopDbContext.Update(articolo);
+            return await Salva();
         }
 
-        public bool DelArticoli(Articoli articolo)
+        public async Task<bool> DelArticoli(Articoli articolo)
         {
-            throw new System.NotImplementedException();
+            _alphaShopDbContext.Remove(articolo);
+            return await Salva();
         }
-
-        public bool Salva()
+        private async Task<bool> Salva()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public bool UpdArticoli(Articoli articolo)
-        {
-            throw new System.NotImplementedException();
+            var saved = await _alphaShopDbContext.SaveChangesAsync();
+            return saved >=0 ? true : false;
         }
         public async Task<bool> ArticoloExists(string Code) =>
             await _alphaShopDbContext.Articoli

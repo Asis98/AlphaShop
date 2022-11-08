@@ -4,6 +4,7 @@
     {
         public string message { get; set; }
         public int errcode { get; set; }
+
         public ErrMsg(string message, int errcode)
         {
             this.message = message;

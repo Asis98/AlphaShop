@@ -10,11 +10,11 @@ namespace AlphashopWebApi.Dtos
         public string? CodStat { get; set; }
         public Int16? PzCart { get; set; }
         public double? PesoNetto { get; set; }
-        public  DateTime? DataCreazione { get; set; }
+        public DateTime? DataCreazione { get; set; }
         public ICollection<BarcodeDto> Ean { get; set; }
         public IvaDto Iva { get; set; }
         public string Categoria { get; set; }
-        public string IdStatoArticolo { get; set; } 
+        public string IdStatoArticolo { get; set; }
     }
 
     public class BarcodeDto
@@ -30,6 +30,7 @@ namespace AlphashopWebApi.Dtos
             this.Descrizione = Descrizione;
             this.Aliquota = Aliquota;
         }
+
         public string Descrizione { get; set; }
         public Int16 Aliquota { get; set; }
     }

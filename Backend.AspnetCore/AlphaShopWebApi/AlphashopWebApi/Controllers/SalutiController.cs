@@ -8,12 +8,11 @@ namespace AlphashopWebApi.Controllers
     [Route("api/saluti")]
     public class SalutiController : Controller
     {
-
         [HttpGet("{Nome}")]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         [ProducesResponseType(200, Type = typeof(string))]
-        public string getSaluti(string Nome) => string.Format("\"Saluti, {0} sono il webservice di aspentCore\"", Nome);
-
+        public string getSaluti(string Nome) =>
+            string.Format("\"Saluti, {0} sono il webservice di aspentCore\"", Nome);
     }
 }

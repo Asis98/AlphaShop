@@ -6,6 +6,7 @@ namespace AlphashopWebApi.Services
     {
         public Task<IEnumerable<Articoli>> SelArticoliByDescrizione(string Descrizione);
         public Task<Articoli> SelArticoloByCodice(string Code);
+        public Task<Articoli> DeleteArticoloByCodice(string Code);
         public Task<Articoli> SelArticoloByEan(string Ean);
         public Task<bool> InsArticoli(Articoli articolo);
         public Task<bool> UpdArticoli(Articoli articolo);

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddCors();
 builder.Services.AddDbContext<AlphaShopDbContext>();
 
@@ -16,13 +17,14 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 app.UseRouting();
-app.UseCors(options =>
-    options
-    //.WithOrigins("http://localhost:4500")
-    //.WithMethods("POST", "PUT", "DELETE", "GET")
-    .AllowAnyOrigin()
-    .AllowAnyMethod()
-    .AllowAnyHeader()
+app.UseCors(
+    options =>
+        options
+            //.WithOrigins("http://localhost:4500")
+            //.WithMethods("POST", "PUT", "DELETE", "GET")
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
 );
 
 if (app.Environment.IsDevelopment())
@@ -31,6 +33,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapControllers(); 
+app.MapControllers();
 
 app.Run();

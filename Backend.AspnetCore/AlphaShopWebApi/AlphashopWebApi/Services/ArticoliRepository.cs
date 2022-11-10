@@ -25,6 +25,26 @@ namespace ArticoliWebService.Services
                 .OrderBy(a => a.Descrizione)
                 .ToListAsync();
 
+        public async Task<IEnumerable<Articoli>> SelArticoliByDescrizione(
+            string Descrizione,
+            string idCart
+        )
+        {
+            bool isNumeric = int.TryParse(idCart, out int n);
+            if (string.IsNullOrWhiteSpace(idCart) || !isNumeric)
+            {
+                return await this.SelArticoliByDescrizione(Descrizione);
+            }
+            return await _alphaShopDbContext.Articoli
+                .Where(a => a.Descrizione!.Contains(Descrizione))
+                .Where(a => a.IdFamAss == int.Parse(idCart))
+                .Include(a => a.Barcode)
+                .Include(a => a.familyAssort)
+                .Include(a => a.iva)
+                .OrderBy(a => a.Descrizione)
+                .ToListAsync();
+        }
+
         public async Task<Articoli> SelArticoloByCodice(string Code) =>
             await _alphaShopDbContext.Articoli
                 .Where(a => a.CodArt!.Equals(Code))

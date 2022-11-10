@@ -7,6 +7,7 @@ using AlphashopWebApi.Models;
 using AlphashopWebApi.Services;
 using ArticoliWebService.Dtos;
 using ArticoliWebService.Services;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ArticoliWebService.Controllers
@@ -17,20 +18,26 @@ namespace ArticoliWebService.Controllers
     public class ArticoliController : Controller
     {
         private readonly IArticoliRepository _articolirepository;
+        private readonly IMapper _mapper;
 
-        public ArticoliController(IArticoliRepository articolirepository)
+        public ArticoliController(IArticoliRepository articolirepository, IMapper mapper)
         {
-            this._articolirepository = articolirepository;
+            _articolirepository = articolirepository;
+            _mapper = mapper;
         }
 
         [HttpGet("cerca/descrizione/{filter}")]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(404)]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<ArticoliDto>))]
-        public async Task<IActionResult> GetArticoliByDesc(string filter)
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ArticoliDto>))]
+        public async Task<ActionResult<IEnumerable<ArticoliDto>>> GetArticoliByDesc(
+            string filter,
+            [FromQuery(Name = "cat")] string idCat,
+            [FromQuery(Name = "prz")] double prezzo
+        )
         {
             var articoliDto = new List<ArticoliDto>();
-            var articoli = await _articolirepository.SelArticoliByDescrizione(filter);
+            var articoli = await _articolirepository.SelArticoliByDescrizione(filter, idCat);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -57,10 +64,10 @@ namespace ArticoliWebService.Controllers
         }
 
         [HttpGet("cerca/codice/{CodArt}")]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(404)]
-        [ProducesResponseType(200, Type = typeof(ArticoliDto))]
-        public async Task<IActionResult> GetArticoloByCode(string CodArt)
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ArticoliDto))]
+        public async Task<ActionResult<ArticoliDto>> GetArticoloByCode(string CodArt)
         {
             bool retVal = await _articolirepository.ArticoloExists(CodArt);
 
@@ -87,9 +94,9 @@ namespace ArticoliWebService.Controllers
         }
 
         [HttpGet("cerca/barcode/{Ean}")]
-        [ProducesResponseType(404)]
-        [ProducesResponseType(200, Type = typeof(ArticoliDto))]
-        public async Task<IActionResult> GetArticoloByEan(string Ean)
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ArticoliDto))]
+        public async Task<ActionResult<ArticoliDto>> GetArticoloByEan(string Ean)
         {
             var articolo = await _articolirepository.SelArticoloByEan(Ean);
 
@@ -107,11 +114,11 @@ namespace ArticoliWebService.Controllers
         }
 
         [HttpPost("inserisci")]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(422)]
-        [ProducesResponseType(500)]
-        [ProducesResponseType(201, Type = typeof(Articoli))]
-        public async Task<IActionResult> SaveArticoli([FromBody] Articoli articolo)
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(Articoli))]
+        public async Task<ActionResult<Articoli>> SaveArticoli([FromBody] Articoli articolo)
         {
             if (articolo == null)
             {
@@ -163,11 +170,11 @@ namespace ArticoliWebService.Controllers
         }
 
         [HttpPut("modifica")]
-        [ProducesResponseType(201, Type = typeof(Articoli))]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(422)]
-        [ProducesResponseType(500)]
-        public async Task<IActionResult> UpdateArticoli([FromBody] Articoli articolo)
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(Articoli))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<Articoli>> UpdateArticoli([FromBody] Articoli articolo)
         {
             if (articolo == null)
             {
@@ -222,10 +229,10 @@ namespace ArticoliWebService.Controllers
         }
 
         [HttpDelete("elimina/{codart}")]
-        [ProducesResponseType(201, Type = typeof(InfoMsg))]
-        [ProducesResponseType(400, Type = typeof(ErrMsg))]
-        [ProducesResponseType(422, Type = typeof(ErrMsg))]
-        [ProducesResponseType(500, Type = typeof(ErrMsg))]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(InfoMsg))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrMsg))]
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity, Type = typeof(ErrMsg))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ErrMsg))]
         public async Task<IActionResult> DeleteArticoli(string codart)
         {
             if (codart == "")
@@ -277,25 +284,14 @@ namespace ArticoliWebService.Controllers
         {
             var barcodeDto = new List<BarcodeDto>();
 
-            foreach (var ean in articolo.Barcode!)
+            foreach (var ean in articolo.Barcode)
             {
-                barcodeDto.Add(new BarcodeDto { Barcode = ean.Barcode!, Tipo = ean.IdTipoArt! });
+                barcodeDto.Add(new BarcodeDto { Barcode = ean.Barcode, Tipo = ean.IdTipoArt });
             }
 
-            var articoliDto = new ArticoliDto
-            {
-                CodArt = articolo.CodArt,
-                Descrizione = articolo.Descrizione,
-                Um = articolo.Um?.Trim(),
-                CodStat = articolo.CodStat?.Trim(),
-                PzCart = articolo.PzCart,
-                PesoNetto = articolo.PesoNetto,
-                DataCreazione = articolo.DataCreazione,
-                IdStatoArticolo = articolo.IdStatoArt!,
-                Ean = barcodeDto,
-                Iva = new IvaDto(articolo.iva!.Descrizione!, articolo.iva.Aliquota),
-                Categoria = articolo.familyAssort!.Descrizione!,
-            };
+            ArticoliDto articoliDto = _mapper.Map<ArticoliDto>(articolo);
+
+            articoliDto.Ean = barcodeDto;
 
             return articoliDto;
         }

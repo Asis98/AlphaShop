@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "5QRIEd4U5hQKfYjKLCnmExSpgAIVKhdCccaHEAoJ9j3qJ34FlxpPtHqVsm3gvgo6pv4RCZVZesW2j6GD2P2Suw==",
+  "dgSpecHash": "CjaBT8w3F3fBqfcrDUqCh3fFRTCKOu7Ojkd8i0J0gsxRCIi14NCM+u8w8n5fSj4T3BZo3VRqAelSgFwpkf+f2g==",
   "success": true,
   "projectFilePath": "C:\\Users\\acasella\\Edok_Code\\alphashop\\Backend.AspnetCore\\AlphashopWebApi\\AlphashopWebApi\\AlphashopWebApi.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\acasella\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\acasella\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\acasella\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
+    "C:\\Users\\acasella\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\acasella\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\acasella\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\acasella\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.10\\microsoft.entityframeworkcore.6.0.10.nupkg.sha512",

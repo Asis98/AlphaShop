@@ -100,7 +100,9 @@ export class ArticoliComponent implements OnInit {
     }
   }
 
-  public elimina(codArt: string) : void {
-    console.log(codArt)
+  public elimina(codArt: string): void {
+    this.articoliService.delArticoloByCodArt(codArt).subscribe(_ =>
+      this.articoli$ = this.articoli$.filter((item) => item.codArt !== codArt)
+    );
   }
 }

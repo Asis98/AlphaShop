@@ -55,6 +55,10 @@ export class ArticoliService {
     );
   }
 
+  delArticoloByCodArt = (codArt: string) =>  {
+    return this.httpClient.delete(`http://${this.server}:${this.port}/api/articoli/elimina/${codArt}`);
+  }
+
   private getDesStatoArt(idStato : string){
     switch(idStato.trim()){
       case '1':
@@ -65,6 +69,5 @@ export class ArticoliService {
         return 'Eliminato'
     }
   }
-
 
 }

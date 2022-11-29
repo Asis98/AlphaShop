@@ -99,4 +99,8 @@ export class ArticoliComponent implements OnInit {
         return 'badge rounded-pill alert alert-danger';
     }
   }
+
+  public elimina(codArt: string) : void {
+    console.log(codArt)
+  }
 }

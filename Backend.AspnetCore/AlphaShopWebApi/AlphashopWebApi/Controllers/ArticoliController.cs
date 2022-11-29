@@ -32,8 +32,8 @@ namespace ArticoliWebService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ArticoliDto>))]
         public async Task<ActionResult<IEnumerable<ArticoliDto>>> GetArticoliByDesc(
             string filter,
-            [FromQuery(Name = "cat")] string idCat,
-            [FromQuery(Name = "prz")] double prezzo
+            [FromQuery(Name = "cat")] string? idCat,
+            [FromQuery(Name = "prz")] double? prezzo
         )
         {
             var articoliDto = new List<ArticoliDto>();

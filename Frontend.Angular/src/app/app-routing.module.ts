@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RouteGuardService } from 'src/services/route-guard.service';
 import { ArticoliComponent } from './pages/articoli/articoli.component';
+import { GestioneArticoloComponent } from './pages/gestione-articolo/gestione-articolo.component';
 import { GridArticoliComponent } from './pages/grid-articoli/grid-articoli.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LogoutComponent } from './pages/logout/logout.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
     component: GridArticoliComponent,
     canActivate: [RouteGuardService],
   },
+  {path:'gestioneArticolo/:codArt', component: GestioneArticoloComponent, canActivate: [RouteGuardService]},
   { path: 'logout', component: LogoutComponent },
   { path: '**', component: NotFoundComponent },
 ];

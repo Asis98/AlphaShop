@@ -29,7 +29,7 @@ export class ArticoliService {
     return this.httpClient.get<IArticoli[]>(`http://${this.server}:${this.port}/api/articoli/cerca/descrizione/${descrizione}`) //ALT + 0096 | ALT GR + '
     .pipe(
       map(response => {
-        response.forEach(item => item.idStatoArticolo = this.getDesStatoArt(item.idStatoArticolo))
+        response.forEach(item => item.descrizioneStatoArticolo = this.getDesStatoArt(item.idStatoArticolo))
         return response;
       })
     );
@@ -39,7 +39,7 @@ export class ArticoliService {
     return this.httpClient.get<IArticoli>(`http://${this.server}:${this.port}/api/articoli/cerca/codice/${codart}`)
     .pipe(
       map(response => {
-        response.idStatoArticolo = this.getDesStatoArt(response.idStatoArticolo)
+        response.descrizioneStatoArticolo = this.getDesStatoArt(response.idStatoArticolo)
         return response;
       })
     );
@@ -49,7 +49,7 @@ export class ArticoliService {
     return this.httpClient.get<IArticoli>(`http://${this.server}:${this.port}/api/articoli/cerca/barcode/${barcode}`)
     .pipe(
       map(response => {
-        response.idStatoArticolo = this.getDesStatoArt(response.idStatoArticolo)
+        response.descrizioneStatoArticolo = this.getDesStatoArt(response.idStatoArticolo)
         return response;
       })
     );

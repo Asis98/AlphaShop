@@ -1,0 +1,137 @@
+<section class="content-main" style="max-width: 760px">
+  <div class="content-header">
+    <h2 class="content-title">{{ title }}</h2>
+    <div>
+      <a href="#" class="btn btn-outline-danger"> × Annulla</a>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <!--
+  <form>
+  -->
+
+      <!-- Codice, Barcode -->
+      <div class="row gx-2">
+        <div class="col-sm-6 mb-3">
+          <label for="codArt" class="form-label">Codice Articolo:</label>
+          <input
+            id="codArt"
+            type="text"
+            placeholder=""
+            class="form-control"
+            [(ngModel)]="articolo.codArt"
+          />
+        </div>
+        <div class="col-sm-6 mb-3">
+          <label for="ean" class="form-label">Barcode:</label>
+          <input id="ean" type="text" placeholder="" class="form-control" />
+        </div>
+      </div>
+
+      <!--Descrizione -->
+      <div class="mb-4">
+        <label class="form-label">Descrizione Articolo</label>
+        <textarea
+          placeholder=""
+          class="form-control"
+          rows="2"
+          [(ngModel)]="articolo.descrizione"
+        ></textarea>
+      </div>
+
+      <!--Unità di misura, Iva -->
+      <div class="row gx-2">
+        <div class="col-sm-6 mb-3">
+          <label class="form-label">Unità di Misura</label>
+          <select class="form-select" [(ngModel)]="articolo.um">
+            <option value="PZ">Pezzi</option>
+            <option value="LT">Litri</option>
+            <option value="KG">Kilogrammi</option>
+          </select>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <label class="form-label">Iva</label>
+          <select class="form-select">
+            <option>22%</option>
+            <option>10%</option>
+            <option>4%</option>
+            <option>Esente</option>
+          </select>
+        </div>
+      </div>
+      <!-- row.// -->
+
+      <!-- Pezzi per cartone, Peso, Prezzo, Valuta -->
+      <div class="mb-4">
+        <label class="form-label"
+          >Pezzi Per Cartone: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Peso
+          Netto:</label
+        >
+        <div class="row gx-2">
+          <div class="col-3">
+            <input
+              placeholder="Pezzi"
+              type="text"
+              class="form-control"
+              [(ngModel)]="articolo.pzCart"
+            />
+          </div>
+          <div class="col-3">
+            <input
+              placeholder="Peso"
+              type="text"
+              class="form-control"
+              [(ngModel)]="articolo.pesoNetto"
+            />
+          </div>
+          <div class="col-4">
+            <input placeholder="Prezzo" type="text" class="form-control" />
+          </div>
+          <div class="col-2">
+            <select class="form-select">
+              <option>EUR</option>
+              <option>USD</option>
+              <option>GBP</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categoria, Stato Articolo -->
+      <div class="row gx-2">
+        <div class="col-sm-6 mb-3">
+          <label class="form-label">Categoria:</label>
+          <select class="form-select">
+            <option>Alimentare</option>
+            <option>Banco</option>
+            <option>Chimico</option>
+          </select>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <label class="form-label">Stato:</label>
+          <select class="form-select" [(ngModel)]="articolo.idStatoArticolo">
+            <option value="1">Attivo</option>
+            <option value="2">Sospeso</option>
+            <option value="3">Eliminato</option>
+          </select>
+        </div>
+      </div>
+      <!-- row.// -->
+
+      <!-- Immagine -->
+      <div class="mb-4">
+        <label class="form-label">Immagine:</label>
+        <input class="form-control" type="file" />
+      </div>
+
+      <br />
+      <button class="btn btn-primary">Salva Articolo</button>
+
+      <!--
+      </form>
+      -->
+    </div>
+  </div>
+</section>

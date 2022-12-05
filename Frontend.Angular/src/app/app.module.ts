@@ -16,6 +16,7 @@ import { ArticoliCardComponent } from './components/articoli-card/articoli-card.
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrazioneComponent } from './pages/registrazione/registrazione.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { GestioneArticoloComponent } from './pages/gestione-articolo/gestione-articolo.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     LogoutComponent,
     GridArticoliComponent,
     ArticoliCardComponent,
-    RegistrazioneComponent
+    RegistrazioneComponent,
+    GestioneArticoloComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, CoreModule, BrowserAnimationsModule, HttpClientModule, NgxPaginationModule],
   providers: [],

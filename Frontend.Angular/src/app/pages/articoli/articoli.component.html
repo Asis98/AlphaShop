@@ -13,7 +13,13 @@
     <header class="card-header">
       <div class="row gx-3">
         <div class="col-lg-4 col-md-6 me-auto">
-          <input type="text" placeholder="Cerca..." class="form-control" [(ngModel)] = "filter" (keyup.enter)="refresh()"/>
+          <input
+            type="text"
+            placeholder="Cerca..."
+            class="form-control"
+            [(ngModel)]="filter"
+            (keyup.enter)="refresh()"
+          />
         </div>
         <div class="col-lg-2 col-6 col-md-3">
           <select class="form-select">
@@ -59,26 +65,34 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let articolo of articoli$ | paginate: {itemsPerPage: righe, currentPage: pagina}">
+            <tr
+              *ngFor="
+                let articolo of articoli$
+                  | paginate : { itemsPerPage: righe, currentPage: pagina }
+              "
+            >
               <td class="tbl-string">{{ articolo.codArt }}</td>
               <td class="tbl-string">{{ articolo.descrizione }}</td>
               <td class="tbl-string">{{ articolo.um }}</td>
               <td class="tbl-string">{{ articolo.pzCart }}</td>
               <td class="tbl-string">{{ articolo.pesoNetto }}</td>
               <td class="tbl-string">
-                {{ articolo.prezzo | currency: "EUR" }}
+                {{ articolo.prezzo | currency : "EUR" }}
               </td>
               <td class="tbl-string infoBadge">
                 <span [ngClass]="getColoreStatoArt(articolo.idStatoArticolo)"
-                  >{{ articolo.idStatoArticolo }}
+                  >{{ articolo.descrizioneStatoArticolo }}
                 </span>
               </td>
               <td class="tbl-string">
-                {{ articolo.dataCreazione | date: "dd-MM-YYYY" }}
+                {{ articolo.dataCreazione | date : "dd-MM-YYYY" }}
               </td>
 
               <td class="text-end">
-                <button class="btn btn-light text-danger" (click)="elimina(articolo.codArt)">
+                <button
+                  class="btn btn-light text-danger"
+                  (click)="elimina(articolo.codArt)"
+                >
                   Elimina
                 </button>
                 <div class="dropdown">
@@ -92,7 +106,13 @@
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Dettaglio</a></li>
                     <li><a class="dropdown-item" href="#">Info</a></li>
-                    <li><a class="dropdown-item" href="#">Modifica</a></li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        (click)="modifica(articolo.codArt)"
+                        >Modifica</a
+                      >
+                    </li>
                   </ul>
                 </div>
                 <!-- dropdown //end -->
@@ -102,11 +122,16 @@
         </table>
 
         <nav class="float-end mt-3" aria-label="Page navigation">
-          <pagination-controls class="my-pagination" (pageChange)="pagina = $event" previousLabel="Precedente" nextLabel="Sucessivo"></pagination-controls>
+          <pagination-controls
+            class="my-pagination"
+            (pageChange)="pagina = $event"
+            previousLabel="Precedente"
+            nextLabel="Sucessivo"
+          ></pagination-controls>
         </nav>
 
         <div class="alert alert-danger" role="alert" *ngIf="errore">
-          {{errore}}
+          {{ errore }}
         </div>
       </div>
     </div>

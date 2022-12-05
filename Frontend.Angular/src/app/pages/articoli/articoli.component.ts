@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
 import { ArticoliService } from 'src/services/data/articoli.service';
 import { IArticoli } from '../../models/articoli';
@@ -20,10 +20,12 @@ export class ArticoliComponent implements OnInit {
   public filter: string | null = '';
 
   public filterType: number = 0;
+  public codArt: string = '';
 
   constructor(
     private articoliService: ArticoliService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -91,9 +93,9 @@ export class ArticoliComponent implements OnInit {
 
   public getColoreStatoArt(idStato: string) {
     switch (idStato) {
-      case 'Attivo':
+      case '1':
         return 'badge rounded-pill alert alert-success';
-      case 'Sospeso':
+      case '2':
         return 'badge rounded-pill alert alert-warning';
       default:
         return 'badge rounded-pill alert alert-danger';
@@ -101,8 +103,24 @@ export class ArticoliComponent implements OnInit {
   }
 
   public elimina(codArt: string): void {
-    this.articoliService.delArticoloByCodArt(codArt).subscribe(_ =>
-      this.articoli$ = this.articoli$.filter((item) => item.codArt !== codArt)
+    this.codArt = codArt;
+
+    this.articoliService.delArticoloByCodArt(codArt).subscribe({
+      next: this.handleOkDelete.bind(this),
+      error: this.handleErrorDelete.bind(this),
+    });
+  }
+  public handleOkDelete(response: any) {
+    this.articoli$ = this.articoli$.filter(
+      (item) => item.codArt !== this.codArt
     );
+    this.codArt = '';
+  }
+  public handleErrorDelete(error: any) {
+    this.errore = error.error.message;
+  }
+
+  public modifica(codArt: string): void {
+    this.router.navigate(['gestioneArticolo', codArt]);
   }
 }

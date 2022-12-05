@@ -8,6 +8,7 @@ export interface IArticoli{
   pesoNetto: number,
   prezzo: number,
   idStatoArticolo : string,
+  descrizioneStatoArticolo: string,
   dataCreazione: Date,
   imageUrl: string
 }

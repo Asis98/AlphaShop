@@ -54,10 +54,7 @@
         <div class="col-sm-6 mb-3">
           <label class="form-label">Iva</label>
           <select class="form-select">
-            <option>22%</option>
-            <option>10%</option>
-            <option>4%</option>
-            <option>Esente</option>
+            <option [ngValue]="iva.idIva" *ngFor="let iva of ivaList">{{iva.descrizione}}</option>
           </select>
         </div>
       </div>
@@ -104,9 +101,7 @@
         <div class="col-sm-6 mb-3">
           <label class="form-label">Categoria:</label>
           <select class="form-select">
-            <option>Alimentare</option>
-            <option>Banco</option>
-            <option>Chimico</option>
+            <option [ngValue]="categoria.id" *ngFor="let categoria of categoryList">{{categoria.id}} -{{categoria.descrizione}}</option>
           </select>
         </div>
         <div class="col-sm-6 mb-3">

@@ -60,3 +60,8 @@ C:\Users\acasella\Edok_Code\alphashop\Backend.AspnetCore\AlphashopWebApi\Alphash
 C:\Users\acasella\Edok_Code\alphashop\Backend.AspnetCore\AlphashopWebApi\AlphashopWebApi\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\acasella\Edok_Code\alphashop\Backend.AspnetCore\AlphashopWebApi\AlphashopWebApi\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\acasella\Edok_Code\alphashop\Backend.AspnetCore\AlphashopWebApi\AlphashopWebApi\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\acasella\Edok_Code\alphashop\Backend.AspnetCore\AlphashopWebApi\AlphashopWebApi\obj\Debug\net6.0\staticwebassets\msbuild.AlphashopWebApi.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\acasella\Edok_Code\alphashop\Backend.AspnetCore\AlphashopWebApi\AlphashopWebApi\obj\Debug\net6.0\staticwebassets\msbuild.build.AlphashopWebApi.props
+C:\Users\acasella\Edok_Code\alphashop\Backend.AspnetCore\AlphashopWebApi\AlphashopWebApi\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.AlphashopWebApi.props
+C:\Users\acasella\Edok_Code\alphashop\Backend.AspnetCore\AlphashopWebApi\AlphashopWebApi\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.AlphashopWebApi.props
+C:\Users\acasella\Edok_Code\alphashop\Backend.AspnetCore\AlphashopWebApi\AlphashopWebApi\obj\Debug\net6.0\staticwebassets.pack.json

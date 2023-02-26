@@ -12,3 +12,14 @@ export interface IArticoli{
   dataCreazione: Date,
   imageUrl: string
 }
+
+export interface IIva {
+  idIva: number;
+  descrizione: string;
+  aliquota: number;
+}
+
+export interface ICategory{
+  id: number;
+  descrizione : string;
+}

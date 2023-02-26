@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { IArticoli } from 'src/app/models/articoli';
+import { IArticoli, ICategory, IIva } from 'src/app/models/articoli';
 
 @Injectable({
   providedIn: 'root'
@@ -69,5 +69,9 @@ export class ArticoliService {
         return 'Eliminato'
     }
   }
+
+  getIva = () => this.httpClient.get<IIva[]>(`http://${this.server}:${this.port}/api/iva`);
+
+  getCategory = () => this.httpClient.get<ICategory[]>(`http://${this.server}:${this.port}/api/category`);
 
 }

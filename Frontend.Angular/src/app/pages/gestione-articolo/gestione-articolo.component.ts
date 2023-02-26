@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IArticoli } from 'src/app/models/articoli';
+import { IArticoli, ICategory, IIva } from 'src/app/models/articoli';
 import { ArticoliService } from 'src/services/data/articoli.service';
 
 @Component({
@@ -14,6 +14,9 @@ export class GestioneArticoloComponent implements OnInit {
   codArt: string = '';
   articolo!: IArticoli;
 
+  ivaList : IIva[] = [];
+  categoryList : ICategory[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private articoliService: ArticoliService
@@ -25,6 +28,12 @@ export class GestioneArticoloComponent implements OnInit {
       next: this.handleResponse.bind(this),
       error: this.handleError.bind(this),
     });
+
+    this.articoliService.getIva().subscribe(
+      response => this.ivaList = response
+    );
+
+    this.articoliService.getCategory().subscribe(response => this.categoryList = response);
   }
   handleResponse(response: any) {
     this.articolo = response;

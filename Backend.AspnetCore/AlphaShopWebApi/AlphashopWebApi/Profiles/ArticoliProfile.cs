@@ -27,6 +27,9 @@ namespace AlphashopWebApi.Profiles
                     dest => dest.PzCart,
                     opt => opt.MapFrom(src => src.PzCart == null ? 0 : src.PzCart)
                 );
+
+            CreateMap<Iva, IvaDto>();
+            CreateMap<FamilyAssort, CategoryDto>();
         }
     }
 }

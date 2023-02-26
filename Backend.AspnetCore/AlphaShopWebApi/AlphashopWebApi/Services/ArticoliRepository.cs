@@ -53,6 +53,20 @@ namespace ArticoliWebService.Services
                 .Include(a => a.familyAssort)
                 .FirstOrDefaultAsync()!;
 
+        public async Task<ICollection<Iva>> SelectIva()
+        {
+            return await _alphaShopDbContext.Iva
+                .OrderBy(a => a.Aliquota) 
+                .ToListAsync();
+        }
+
+        public async Task<ICollection<FamilyAssort>> SelectCategory()
+        {
+            return await _alphaShopDbContext.Famassort
+                .OrderBy(a => a.Id)
+                .ToListAsync();
+        }
+
         public async Task<Articoli> DeleteArticoloByCodice(string Code)
         {
             return await _alphaShopDbContext.Articoli

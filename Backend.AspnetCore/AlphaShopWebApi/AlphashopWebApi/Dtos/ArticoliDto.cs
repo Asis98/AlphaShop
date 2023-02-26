@@ -34,4 +34,10 @@ namespace AlphashopWebApi.Dtos
         public string Descrizione { get; set; }
         public Int16 Aliquota { get; set; }
     }
+
+    public class CategoryDto
+    {
+        public int Id { get; set; }
+        public string Descrizione { get; set; }
+    }
 }
